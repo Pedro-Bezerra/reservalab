@@ -20,6 +20,7 @@ func EnviarMensagem(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"erro": err.Error()})
+		return 
 	}
 
 	c.JSON(http.StatusCreated, mensagemEnviada)
@@ -37,6 +38,7 @@ func EnviarSolicitacao(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"erro": err.Error()})
+		return
 	}
 
 	c.JSON(http.StatusCreated, solicitacaoEnviada)
