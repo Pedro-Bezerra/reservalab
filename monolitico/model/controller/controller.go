@@ -3,13 +3,13 @@ package controller
 import (
 	"net/http"
 
-	"github.com/Pedro-Bezerra/reservalab-mono/model/entity"
+	"github.com/Pedro-Bezerra/reservalab-mono/model/dto"
 	"github.com/Pedro-Bezerra/reservalab-mono/model/service"
 	"github.com/gin-gonic/gin"
 )
 
 func EnviarMensagem(c *gin.Context) {
-	var mensagemDto entity.Mensagem
+	var mensagemDto dto.MensagemDto
 	
 	if err := c.ShouldBindJSON(&mensagemDto); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"erro": err.Error()})

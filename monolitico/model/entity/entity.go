@@ -30,6 +30,44 @@ type Reserva struct {
 	Ocupado       bool `json:"is_ocupado" gorm:"not null"`
 }
 
+/*
+
+func CriarSolicitacaoDto(solicitacao *Solicitacao) (*dto.SolicitacaoDto) {
+	solicitacaoDto := dto.SolicitacaoDto{
+		Nome: solicitacao.Nome,
+		Email: solicitacao.Email,
+		Matricula: solicitacao.Matricula,
+		Vinculo: solicitacao.Vinculo,
+		Observacoes: solicitacao.Observacoes,
+		Data: solicitacao.Data,
+		HorarioInicio: solicitacao.HorarioInicio,
+		HorarioTermino: solicitacao.HorarioTermino,
+	}
+
+	return &solicitacaoDto
+}
+
+func CriarMensagemDto(mensagem *Mensagem) (*dto.MensagemDto) {
+	mensagemDto := dto.MensagemDto{
+		Nome: mensagem.Nome,
+		Email: mensagem.Email,
+		Mensagem: mensagem.Mensagem,
+		Monitor: mensagem.Monitor,
+	}
+
+	return &mensagemDto
+}
+
+func CriarReservaDto(reserva *Reserva) (*dto.ReservaDto) {
+	reservaDto := dto.ReservaDto{
+		FkSolicitacao: reserva.FkSolicitacao,
+		Ocupado: reserva.Ocupado,
+	}
+
+	return &reservaDto
+}
+*/
+
 func (Solicitacao) TableName() string {
 	return "solicitacoes"
 }
