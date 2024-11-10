@@ -16,5 +16,6 @@ func RotasSolicitacao(router *gin.Engine) {
 	solicitacaoRotas := router.Group("/solicitacao")
 	{
 		solicitacaoRotas.POST("", controller.EnviarSolicitacao)
+		solicitacaoRotas.PUT("/reagendamento", controller.ReagendarReserva)
 	}
 }
