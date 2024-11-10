@@ -11,3 +11,10 @@ func RotasMensagem(router *gin.Engine) {
 		mensagemRotas.POST("", controller.EnviarMensagem)
 	}
 }
+
+func RotasSolicitacao(router *gin.Engine) {
+	solicitacaoRotas := router.Group("/solicitacao")
+	{
+		solicitacaoRotas.POST("", controller.EnviarSolicitacao)
+	}
+}

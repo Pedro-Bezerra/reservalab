@@ -17,6 +17,7 @@ func main() {
 
 	router := gin.Default()
 	routes.RotasMensagem(router)
+	routes.RotasSolicitacao(router)
 
 	router.Run(":8080")
 }

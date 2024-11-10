@@ -27,6 +27,9 @@ type Mensagem struct {
 type Reserva struct {
 	IdReserva     uint `json:"id_reserva" gorm:"primaryKey;autoIncrement"`
 	FkSolicitacao uint `json:"fk_solicitacao" gorm:"foreignKey:IdSolicitacao"`
+	Data           time.Time `json:"data" gorm:"not null"`
+	HorarioInicio  time.Time `json:"horario_inicio" gorm:"not null"`
+	HorarioTermino time.Time `json:"horario_termino" gorm:"not null"`
 	Ocupado       bool `json:"is_ocupado" gorm:"not null"`
 }
 
