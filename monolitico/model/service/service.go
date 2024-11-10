@@ -8,6 +8,8 @@ import (
 	"github.com/Pedro-Bezerra/reservalab-mono/model/entity"
 )
 
+// FALTA ADICIONAR NO BANCO DE DADOS
+
 func EnviarMensagem(mensagemDto *dto.MensagemDto) (*entity.Mensagem, error) {
 
 	var mensagem entity.Mensagem = *dto.CriarMensagem(mensagemDto)
@@ -24,16 +26,24 @@ func EnviarSolicitacao(solicitacaoDto *dto.SolicitacaoDto) (*entity.Solicitacao,
 
 	var solicitacao entity.Solicitacao = *dto.CriarSolicitacao(solicitacaoDto)
 
-	isDisponivel, err := ChecarDisponibilidade(solicitacaoDto)
+	isDisponivel, erro := ChecarDisponibilidade(solicitacaoDto)
 
 	if !isDisponivel {
-		return nil, err
+		return nil, erro
 	}
 
 	if err := database.DB.Create(&solicitacao).Error; err != nil {
 		log.Fatalf("Erro no armazenamento da solicitação: %v", err)
 		return nil, err
 	}
+
+	reserva := entity.CriarReserva(&solicitacao)
+
+	if err := database.DB.Create(&reserva).Error; err != nil {
+		return nil, err
+	}
+
+
 
 	return &solicitacao, nil
 }

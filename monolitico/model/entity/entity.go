@@ -2,6 +2,7 @@ package entity
 
 import (
 	"time"
+
 )
 
 type Solicitacao struct {
@@ -31,6 +32,18 @@ type Reserva struct {
 	HorarioInicio  time.Time `json:"horario_inicio" gorm:"not null"`
 	HorarioTermino time.Time `json:"horario_termino" gorm:"not null"`
 	Ocupado       bool `json:"is_ocupado" gorm:"not null"`
+}
+
+func CriarReserva(solicitacao *Solicitacao) (*Reserva) {
+	reserva := Reserva{
+		FkSolicitacao: solicitacao.IdSolicitacao,
+		Data: solicitacao.Data,
+		HorarioInicio: solicitacao.HorarioInicio,
+		HorarioTermino: solicitacao.HorarioTermino,
+		Ocupado: true,
+	}
+
+	return &reserva
 }
 
 /*
