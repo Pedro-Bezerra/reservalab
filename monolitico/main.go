@@ -8,16 +8,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
+func init() {
 	config.LoadEnv()
 
 	database.ConectarDB()
 
-	database.DB.AutoMigrate(&entity.Solicitacao{}, &entity.Mensagem{}, &entity.Reserva{})
+	database.DB.AutoMigrate(&entity.Solicitacao{}, &entity.Mensagem{}, &entity.Reserva{}, &entity.Usuario{})
+}
 
+func main() { 
 	router := gin.Default()
+
 	routes.RotasMensagem(router)
 	routes.RotasSolicitacao(router)
+	routes.RotasUsuario(router)
 
 	router.Run(":8080")
 }

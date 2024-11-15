@@ -19,3 +19,11 @@ func RotasSolicitacao(router *gin.Engine) {
 		solicitacaoRotas.PUT("/reagendamento", controller.ReagendarReserva)
 	}
 }
+
+func RotasUsuario(router *gin.Engine) {
+	rotasUsuario := router.Group("/usuario")
+	{
+		rotasUsuario.POST("/cadastro", controller.CadastrarMonitor)
+		rotasUsuario.POST("/login", controller.Login)
+	}
+}

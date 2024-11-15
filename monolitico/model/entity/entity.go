@@ -34,6 +34,14 @@ type Reserva struct {
 	Ocupado       bool `json:"is_ocupado" gorm:"not null"`
 }
 
+type Usuario struct {
+	IdUsuario uint `json:"id_usuario" gorm:"primaryKey;autoIncrement"`
+	Usuario string `json:"usuario" gorm:"unique;not null"`
+	Email string `json:"email" gorm:"unique;not null"`
+	Senha string `json:"senha" gorm:"not null"`
+	Tipo string `json:"tipo" gorm:"not null"`
+}
+
 func CriarReserva(solicitacao *Solicitacao) (*Reserva) {
 	reserva := Reserva{
 		FkSolicitacao: solicitacao.IdSolicitacao,
@@ -94,4 +102,8 @@ func (Mensagem) TableName() string {
 
 func (Reserva) TableName() string {
 	return "reservas"
+}
+
+func (Usuario) TableName() string {
+	return "usuarios"
 }

@@ -29,6 +29,17 @@ type ReservaDto struct {
 	Ocupado       bool `json:"is_ocupado" binding:"required"`
 }
 
+type UsuarioDto struct {
+	Usuario string `json:"usuario" binding:"required"`
+	Email string `json:"email" binding:"required,email"`
+	Senha string `json:"senha" binding:"required"`
+}
+
+type Login struct {
+	Email string `json:"email" binding:"required"`
+	Senha string `json:"senha" binding:"required"`
+}
+
 func CriarMensagem(dto *MensagemDto) *entity.Mensagem {
 	mensagem := entity.Mensagem{
 		Nome:     dto.Nome,
