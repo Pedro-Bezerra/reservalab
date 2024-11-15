@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"github.com/Pedro-Bezerra/reservalab-mono/middleware"
 	"github.com/Pedro-Bezerra/reservalab-mono/model/controller"
 	"github.com/gin-gonic/gin"
 )
@@ -23,7 +24,7 @@ func RotasSolicitacao(router *gin.Engine) {
 func RotasUsuario(router *gin.Engine) {
 	rotasUsuario := router.Group("/usuario")
 	{
-		rotasUsuario.POST("/cadastro", controller.CadastrarMonitor)
+		rotasUsuario.POST("/cadastro", middleware.RealizarAuth, controller.CadastrarMonitor)
 		rotasUsuario.POST("/login", controller.Login)
 	}
 }

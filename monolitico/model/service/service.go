@@ -170,8 +170,8 @@ func Login(login *dto.Login) (string, error) {
 	// Create a new token object, specifying signing method and the claims
 	// you would like it to contain.
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"subject": usuario.IdUsuario,
-		"expiration": time.Now().Add(time.Hour * 24 * 30).Unix(),
+		"sub": usuario.IdUsuario,
+		"exp": time.Now().Add(time.Hour * 24 * 30).Unix(),
 	})
 
 	// Sign and get the complete encoded token as a string using the secret
